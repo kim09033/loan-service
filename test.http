@@ -1,0 +1,35 @@
+// 1. 고객 생성
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "류미미",
+  "phoneNumber": "01012341234",
+  "annualIncome": 60000000,
+  "jobName": "Developer"
+}
+
+### 2. 대출 신청
+POST http://localhost:8080/loans/apply
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "loanAmount": 4000000,
+  "loanTermMonths": 12
+}
+
+### 3. 심사 시작
+POST http://localhost:8080/loans/1/review
+
+### 4. 승인
+POST http://localhost:8080/loans/1/approve
+
+### 5. 거절 테스트용
+POST http://localhost:8080/loans/1/reject
+
+### 6. 실행
+POST http://localhost:8080/loans/1/execute
+
+### 7. 상환 시작
+POST http://localhost:8080/loans/1/start-repayment
