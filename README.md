@@ -56,29 +56,28 @@ APPLIED → REVIEWING → APPROVED → EXECUTED → REPAYING
 ```mermaid
 erDiagram
     CUSTOMER {
-        BIGINT id PK
-        VARCHAR name
-        VARCHAR phoneNumber
-        INT annualIncome
-        VARCHAR jobName
-        DATETIME createdAt
+        BIGINT ID PK
+        VARCHAR NAME
+        VARCHAR PHONE_NUMBER
+        INTEGER ANNUAL_INCOME
+        VARCHAR JOB_NAME
     }
 
     LOAN_APPLICATION {
-        BIGINT id PK
-        BIGINT customerId FK
-        BIGINT amount
-        DECIMAL interestRate
-        INT periodMonths
-        VARCHAR status
-        DATETIME appliedAt
+        BIGINT ID PK
+        BIGINT CUSTOMER_ID FK
+        BIGINT LOAN_AMOUNT
+        INTEGER LOAN_TERM_MONTHS
+        VARCHAR STATUS
+        TIMESTAMP APPLIED_AT
     }
 
     CUSTOMER ||--o{ LOAN_APPLICATION : applies
 ```
-- Customer는 고객 정보를 관리합니다.
-- LoanApplication은 대출 신청 정보를 관리하며, 상태값(APPLIED, APPROVED 등)을 통해 대출 진행 상태를 관리합니다.
-- 한 명의 고객은 여러 건의 대출 신청을 할 수 있는 구조로 설계했습니다.
+- CUSTOMER는 고객 기본 정보를 관리합니다.
+- LOAN_APPLICATION은 대출 신청 정보를 관리합니다.
+- 한 명의 고객은 여러 건의 대출 신청을 할 수 있도록 설계했습니다.
+- 대출 신청 상태는 STATUS 컬럼으로 관리합니다.
 
 ---
 ## 📌 API 목록
